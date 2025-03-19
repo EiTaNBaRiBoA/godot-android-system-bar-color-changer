@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtl3cy3awyva1"]
+
+[ext_resource type="Script" uid="uid://oiyx056majqr" path="res://main.gd" id="1_5g8lr"]
+[ext_resource type="Texture2D" uid="uid://bgs0m1punaqv3" path="res://addons/SystemBarColorChanger/icon.png" id="2_xiny2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qoqou"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2o5j"]
+content_margin_left = 20.0
+bg_color = Color(0.0588235, 0.172549, 0.172549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mb2y"]
+content_margin_left = 20.0
+bg_color = Color(0.0588235, 0.172549, 0.172549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1amm"]
+content_margin_left = 20.0
+bg_color = Color(0.0588235, 0.172549, 0.172549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1pedh"]
+content_margin_left = 20.0
+bg_color = Color(0.0588235, 0.172549, 0.172549, 1)
+
+[node name="demo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5g8lr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.28031, 0.280462, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 74.0
+offset_top = -3.0
+offset_right = -60.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="icon" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+texture = ExtResource("2_xiny2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ColorPickerButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Click to change color dynamically"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="set_status_color" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Set Status Bar Color"
+
+[node name="set_nav_color" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Set Navigation Bar Color"
+
+[node name="translucent_system_bars" type="CheckButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qoqou")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_o2o5j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6mb2y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h1amm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1pedh")
+text = "Translucent System Bars"
+
+[connection signal="color_changed" from="VBoxContainer/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+[connection signal="pressed" from="VBoxContainer/set_status_color" to="." method="_on_set_status_color_pressed"]
+[connection signal="pressed" from="VBoxContainer/set_nav_color" to="." method="_on_set_nav_color_pressed"]
+[connection signal="toggled" from="VBoxContainer/translucent_system_bars" to="." method="_on_translucent_system_bars_toggled"]
