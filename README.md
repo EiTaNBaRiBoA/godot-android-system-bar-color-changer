@@ -1,5 +1,5 @@
 <p align="center">
-   <img width="200" src="plugin/demo/icon.png?raw=true" alt="plugin icon">
+   <img width="200" src="SystemBarColorChanger/icon.png?raw=true" alt="plugin icon">
 </p>
 
 # Android System Bar Color Changer [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/syntaxerror247)
@@ -14,12 +14,11 @@ Steps:
 - enable the plugin via the `Plugins` tab of `Project->Project Settings...` menu, in the Godot Editor.
 
 ## How to use
-1. Turn on gradle build in your project.
-   - Follow instructions on the following page to create an [Android gradle build](https://docs.godotengine.org/en/stable/tutorials/export/android_gradle_build.html).
+1. Make the system bar visible
+   - Disable `immersive_mode` in the Android export settings, **or**
+   - Use [`window_set_mode`](https://docs.godotengine.org/en/stable/classes/class_displayserver.html#class-displayserver-method-window-set-mode) to toggle it at runtime.
 
-2. Turn off immersive_mode in Android exprot settings (to make system bar visible).
-
-3. Add `SystemBarColorChanger` node to your scene and reference it in a variable named SystemBarColorChanger.
+3. Call the required methods anywhere in your project:
    - To change status bar color
    ```
      SystemBarColorChanger.set_status_bar_color(color)
@@ -28,15 +27,6 @@ Steps:
    ```
      SystemBarColorChanger.set_navigation_bar_color(color)
    ```
-   - If you want to have light status bar eg. WHITE (Note: You will have to call set_status_bar_color() to update changes)
-   ```
-     SystemBarColorChanger.lightStatusBar = true
-   ```
-   - If you want to have light navigation bar eg. WHITE (Note: You will have to call set_navigation_bar_color() to update changes)
-   ```
-     SystemBarColorChanger.lightNavigationBar = true
-   ```
-4. Enable/disable Translucent system bars.
    - To enable translucent system bars
    ```
       SystemBarColorChanger.set_translucent_system_bars(true)
@@ -48,7 +38,7 @@ Steps:
 
 ---
 ## Demo Project
-***You can try this plugin using demo project: [Demo Project](plugin/demo)***
+***You can try this plugin using demo project: [Demo Project](demo)***
 
 https://github.com/user-attachments/assets/7e87834b-de21-4dec-9b8a-60a2d0b95beb
 
