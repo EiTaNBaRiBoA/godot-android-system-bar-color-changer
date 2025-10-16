@@ -1,15 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dtl3cy3awyva1"]
 
 [ext_resource type="Script" uid="uid://oiyx056majqr" path="res://main.gd" id="1_5g8lr"]
-[ext_resource type="Texture2D" uid="uid://bgs0m1punaqv3" path="res://addons/SystemBarColorChanger/icon.png" id="2_xiny2"]
+[ext_resource type="Texture2D" uid="uid://5yy5r3beaoiq" path="res://addons/SystemBarColorChanger/icon.png" id="2_xiny2"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qoqou"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2o5j"]
-content_margin_left = 20.0
-bg_color = Color(0.0588235, 0.172549, 0.172549, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mb2y"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1pedh"]
 content_margin_left = 20.0
 bg_color = Color(0.0588235, 0.172549, 0.172549, 1)
 
@@ -17,9 +11,15 @@ bg_color = Color(0.0588235, 0.172549, 0.172549, 1)
 content_margin_left = 20.0
 bg_color = Color(0.0588235, 0.172549, 0.172549, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1pedh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mb2y"]
 content_margin_left = 20.0
 bg_color = Color(0.0588235, 0.172549, 0.172549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2o5j"]
+content_margin_left = 20.0
+bg_color = Color(0.0588235, 0.172549, 0.172549, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qoqou"]
 
 [node name="demo" type="Control"]
 layout_mode = 3
@@ -74,27 +74,21 @@ text = "Click to change color dynamically"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="set_status_color" type="Button" parent="VBoxContainer"]
+[node name="set_system_color" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-text = "Set Status Bar Color"
-
-[node name="set_nav_color" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-text = "Set Navigation Bar Color"
+text = "Set System Bar Color"
 
 [node name="translucent_system_bars" type="CheckButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qoqou")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_o2o5j")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6mb2y")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_h1amm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1pedh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h1amm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6mb2y")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_o2o5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qoqou")
 text = "Translucent System Bars"
 
 [connection signal="color_changed" from="VBoxContainer/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
-[connection signal="pressed" from="VBoxContainer/set_status_color" to="." method="_on_set_status_color_pressed"]
-[connection signal="pressed" from="VBoxContainer/set_nav_color" to="." method="_on_set_nav_color_pressed"]
+[connection signal="pressed" from="VBoxContainer/set_system_color" to="." method="_on_set_system_color_pressed"]
 [connection signal="toggled" from="VBoxContainer/translucent_system_bars" to="." method="_on_translucent_system_bars_toggled"]
