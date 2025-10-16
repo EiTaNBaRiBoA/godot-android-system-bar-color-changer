@@ -19,17 +19,13 @@ Steps:
    - Use [`window_set_mode`](https://docs.godotengine.org/en/stable/classes/class_displayserver.html#class-displayserver-method-window-set-mode) to toggle it at runtime.
 
 3. Call the required methods anywhere in your project:
-   - To change status bar color
+   - To change system bar color
    ```
-     SystemBarColorChanger.set_status_bar_color(color)
-   ```
-   - To change navigation bar color
-   ```
-     SystemBarColorChanger.set_navigation_bar_color(color)
+     SystemBarColorChanger.set_system_bar_color(color)
    ```
    - To enable translucent system bars
    ```
-      SystemBarColorChanger.set_translucent_system_bars(true)
+     SystemBarColorChanger.set_translucent_system_bars(true)
    ```
    - To disable translucent system bars
    ```
